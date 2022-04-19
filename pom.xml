@@ -16,6 +16,10 @@
         <module>wtmall-order</module>
         <module>wtmall-product</module>
         <module>wtmall-ware</module>
+        <module>renren-fast</module>
+        <module>renren-generator</module>
+        <module>wtmall-common</module>
+        <module>wtmall-gateway</module>
     </modules>
 
 </project>

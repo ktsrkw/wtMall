@@ -1,0 +1,10 @@
+server:
+  port: 12000
+
+spring:
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+    loadbalander:
+      ribbon:
+        enable: false

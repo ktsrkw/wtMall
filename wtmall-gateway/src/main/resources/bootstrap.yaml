@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: wtmall-gateway
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848
+        namespace: 11a3ecb1-8be9-4f61-ae4c-febde145d33c
+        file-extension: yaml
