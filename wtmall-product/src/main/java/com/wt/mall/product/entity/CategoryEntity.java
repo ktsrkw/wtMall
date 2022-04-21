@@ -1,10 +1,13 @@
 package com.wt.mall.product.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 import lombok.Data;
 
 /**
@@ -16,7 +19,7 @@ import lombok.Data;
  */
 @Data
 @TableName("pms_category")
-public class CategoryEntity implements Serializable {
+public class CategoryEntity implements Serializable,Comparable<CategoryEntity> {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -57,4 +60,11 @@ public class CategoryEntity implements Serializable {
 	 */
 	private Integer productCount;
 
+	@TableField(exist = false)
+	private List<CategoryEntity> childrenCategoryEntities;
+
+	@Override
+	public int compareTo(CategoryEntity categoryEntity) {
+		return this.getSort().compareTo(categoryEntity.getSort());
+	}
 }
