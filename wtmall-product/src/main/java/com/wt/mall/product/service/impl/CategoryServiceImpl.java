@@ -69,6 +69,12 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         return buildCategoryTree(level01CategoryEntities,categoryEntities);
     }
 
+    @Override
+    public void removeCategoryByIds(List<Long> catIds) {
+        //TODO:检查当前删除的菜单是否被其他菜单引用
+        categoryDao.deleteBatchIds(catIds);
+    }
+
     private List<CategoryEntity> buildCategoryTree(List<CategoryEntity> bootCategoryEntities,
                                                    List<CategoryEntity> allCategoryEntities){
         for (CategoryEntity bootCategoryEntity : bootCategoryEntities) {

@@ -5,11 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.wt.mall.product.entity.CategoryEntity;
 import com.wt.mall.product.service.CategoryService;
@@ -65,6 +61,16 @@ public class CategoryController {
     }
 
     /**
+     * 批量修改
+     */
+    @RequestMapping("/update/batch")
+    public R updateBatch(@RequestBody CategoryEntity[] categoryEntities){
+        categoryService.updateBatchById(Arrays.asList(categoryEntities));
+
+        return R.ok();
+    }
+
+    /**
      * 修改
      */
     @RequestMapping("/update")
@@ -81,7 +87,10 @@ public class CategoryController {
     @RequestMapping("/delete")
     //@RequiresPermissions("product:category:delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
+
+		//categoryService.removeByIds(Arrays.asList(catIds));
+
+        categoryService.removeCategoryByIds(Arrays.asList(catIds));
 
         return R.ok();
     }
